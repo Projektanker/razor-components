@@ -1,0 +1,18 @@
+name: ✨ Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ✨ Release Please
+        uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: simple
+          package-name: Projektanker.RazorPackages
+          extra-files: ./Projektanker.RazorPackages/Projektanker.RazorPackages.csproj
+          include-v-in-tag: false
