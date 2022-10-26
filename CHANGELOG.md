@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/Projektanker/razor-components/compare/1.1.2...1.1.3) (2022-10-26)
+
+
+### Bug Fixes
+
+* publish after release ([f507d1a](https://github.com/Projektanker/razor-components/commit/f507d1ae8c60d5892f902bed3b6aae69ba79042d))
+
 ## [1.1.2](https://github.com/Projektanker/razor-components/compare/1.1.1...1.1.2) (2022-10-26)
 
 
