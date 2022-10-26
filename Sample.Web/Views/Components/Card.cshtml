@@ -1,0 +1,7 @@
+﻿@using Sample.Web.Views.Components
+@model Card
+
+<div class="card">
+    <h3>@Model.NamedSlots["title"]</h3>
+    @Model.NamedSlots["content"]
+</div>

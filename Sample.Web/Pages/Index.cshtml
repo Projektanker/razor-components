@@ -1,0 +1,26 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <hr />
+    <HelloWorld greeting="Hello" />
+    <hr />
+    <Button>
+        Click me
+    </Button>
+    <hr />
+    <Card >
+        <fragment slot="title">
+            Card title
+        </fragment>
+        <div slot="content">
+            <p>Card content</p>
+            <p>Lorem ipsum</p>
+        </div>
+    </Card>
+</div>
+
