@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - release-please
-    if: ${{ needs.release-please.release_created == true }}
+    if: ${{ needs.release-please.outputs.release_created == true }}
 
     steps:
       - name: 🛒 Checkout
