@@ -6,7 +6,7 @@ Razor Components is an ASP.NET Core library that allows you to write UI componen
 
 ## Installation
 
-Install the NuGet package  
+Install the [NuGet package](https://www.nuget.org/packages/Projektanker.RazorComponents)  
 ```bash
 dotnet add package Projektanker.RazorComponents
 ```
