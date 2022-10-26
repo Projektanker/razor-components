@@ -12,14 +12,22 @@ public abstract class RazorComponentTagHelper : TagHelper
     private static readonly string ParentComponentsStackKey
         = $"{typeof(RazorComponentTagHelper).FullName}.{nameof(ParentComponentsStackKey)}";
 
+    private static readonly Dictionary<Type, string> _razorViewNamesByType = new();
+
     private readonly string? _razorViewName;
 
     protected RazorComponentTagHelper()
     {
         var type = GetType();
+        if (_razorViewNamesByType.TryGetValue(type, out _razorViewName))
+        {
+            return;
+        }
+
         var assemblyName = type.Assembly.GetName().Name;
         var relativeTypeName = type.FullName![assemblyName!.Length..];
         _razorViewName = $"~{relativeTypeName.Replace('.', '/')}.cshtml";
+        _razorViewNamesByType.Add(type, _razorViewName);
     }
 
     protected RazorComponentTagHelper(string? razorViewName)
