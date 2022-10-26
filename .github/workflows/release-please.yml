@@ -15,5 +15,6 @@ jobs:
         with:
           release-type: simple
           package-name: Projektanker.RazorPackages
-          extra-files: ./Projektanker.RazorPackages/Projektanker.RazorPackages.csproj
+          extra-files: |
+            Projektanker.RazorPackages/Projektanker.RazorPackages.csproj
           include-v-in-tag: false
