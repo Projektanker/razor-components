@@ -24,8 +24,7 @@ jobs:
         run: >
           dotnet pack 
           ./Projektanker.RazorComponents/Projektanker.RazorComponents.csproj
-          --configuration Release 
-          -p:Version=${{ github.ref_name }}
+          --configuration Release
 
       - name: 🚀 Push
         run: >
