@@ -13,7 +13,6 @@ public abstract class RazorComponentTagHelper : TagHelper
         = $"{typeof(RazorComponentTagHelper).FullName}.{nameof(ParentComponentsStackKey)}";
 
     private readonly string? _razorViewName;
-    private ViewContext? _viewContext;
 
     protected RazorComponentTagHelper()
     {
@@ -30,15 +29,7 @@ public abstract class RazorComponentTagHelper : TagHelper
 
     [HtmlAttributeNotBound]
     [ViewContext]
-    public ViewContext? ViewContext
-    {
-        get => _viewContext;
-        set
-        {
-            ArgumentNullException.ThrowIfNull(value);
-            _viewContext = value;
-        }
-    }
+    public ViewContext? ViewContext { get; set; }
 
     /// <summary>
     /// Child content for rendering in the razor template.
@@ -112,8 +103,8 @@ public abstract class RazorComponentTagHelper : TagHelper
 
     private IHtmlHelper GetHtmlHelper()
     {
-        var htmlHelper = _viewContext!.HttpContext.RequestServices.GetService<IHtmlHelper>();
-        ((IViewContextAware)htmlHelper).Contextualize(_viewContext);
+        var htmlHelper = ViewContext!.HttpContext.RequestServices.GetService<IHtmlHelper>();
+        (htmlHelper as IViewContextAware)?.Contextualize(ViewContext);
         return htmlHelper;
     }
 
