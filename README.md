@@ -1,15 +1,22 @@
 ﻿# Razor Components
 
+![NuGet](https://badgen.net/nuget/v/Projektanker.RazorComponents)
+
 Razor Components is an ASP.NET Core library that allows you to write UI components while maintaining compatibility with Razor Pages and MVC.
 
 ## Installation
+
+Install the NuGet package  
+```bash
+dotnet add package Projektanker.RazorComponents
+```
 
 Razor Components works by using tag helpers.  
 As with all tag helpers, you will need to go to the `_ViewImports.cshtml` file and add a reference to the package's and your project's namespace like so:
 
 ```csharp
 @addTagHelper *, Projektanker.RazorComponents
-@addTagHelper *, Example.Web
+@addTagHelper *, Sample.Web
 ```
 
 ## Usage
