@@ -3,13 +3,16 @@
 namespace Projektanker.RazorComponents;
 
 [HtmlTargetElement(Attributes = SlotAttributeName)]
-public class ComponentSlotTagHelper : RazorComponentTagHelper
+public class ComponentSlotAttributeTagHelper : RazorComponentTagHelper
 {
     public const string SlotAttributeName = "slot";
 
-    public ComponentSlotTagHelper() : base(null)
+    public ComponentSlotAttributeTagHelper() : base(null)
     {
     }
+
+    [HtmlAttributeName(SlotAttributeName)]
+    public string? Slot { get; set; }
 
     protected override void ProcessComponent(TagHelperContext context, TagHelperOutput output)
     {
@@ -18,17 +21,12 @@ public class ComponentSlotTagHelper : RazorComponentTagHelper
             return;
         }
 
-        var slotName = output
-            .Attributes[SlotAttributeName]
-            .Value
-            .ToString();
-
-        if (string.IsNullOrEmpty(slotName))
+        if (string.IsNullOrEmpty(Slot))
         {
             return;
         }
 
-        ParentComponent.NamedSlots.Add(slotName, ChildContent);
+        ParentComponent.NamedSlots.Add(Slot, ChildContent);
         output.Attributes.RemoveAll(SlotAttributeName);
         output.SuppressOutput();
     }
