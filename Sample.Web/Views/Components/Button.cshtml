@@ -2,5 +2,5 @@
 @model Button
 
 <button class="btn btn-primary">
-    @Model.ChildContent
+    <slot model="@Model"></slot>
 </button>

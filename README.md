@@ -78,7 +78,7 @@ public class Button : RazorComponentTagHelper
 @using Sample.Web.Views.Components
 @model Button
 <button class="btn btn-primary">
-  @Model.ChildContent
+  <slot model="@Model"></slot>
 </button>
 ```
 
@@ -87,6 +87,18 @@ You would use it like this:
 <Button>
   Click me
 </Button>
+```
+
+A component can specify _fallbacks_ for any slots that are left empty, 
+by putting content inside the `<slot>` element:
+```html
+@using Sample.Web.Views.Components
+@model Button
+<button class="btn btn-primary">
+  <slot model="@Model">
+    <em>no content was provided</em>
+  </slot>
+</button>
 ```
 
 ### Advanced usage with named slots
@@ -113,8 +125,12 @@ public class Card : RazorComponentTagHelper
 @using Sample.Web.Views.Components
 @model Card
 <div class="card">
-  <h3>@Model.NamedSlots["title"]</h3>
-  @Model.NamedSlots["content"]
+  <h3>
+    <slot name="title" model="@Model">
+      Missing title
+    </slot>
+  </h3>
+  <slot name="content" model="@Model"></slot>
 </div>
 ```
 

@@ -2,6 +2,12 @@
 @model Card
 
 <div class="card">
-    <h3>@Model.NamedSlots["title"]</h3>
-    @Model.NamedSlots["content"]
+    <h3>
+        <slot name="title" model="@Model" >
+            Missing Title
+        </slot>
+    </h3>
+    <slot name="content" model="@Model">
+        <div>Missing content</div>
+    </slot>
 </div>
