@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/Projektanker/razor-components/compare/1.1.1...1.2.0) (2022-11-16)
+
+
+### Features
+
+* Add &lt;slot&gt; TagHelper to render slots ([26151aa](https://github.com/Projektanker/razor-components/commit/26151aadd2313121fd7eb48016a3ff3d6a50bca5))
+
 ## [1.1.1](https://github.com/Projektanker/razor-components/compare/1.1.0...1.1.1) (2022-10-29)
 
 
