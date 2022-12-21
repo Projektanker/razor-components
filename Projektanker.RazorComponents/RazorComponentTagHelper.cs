@@ -35,6 +35,8 @@ public abstract class RazorComponentTagHelper : TagHelper
         _razorViewName = razorViewName;
     }
 
+    public string? RazorViewName => _razorViewName;
+
     [HtmlAttributeNotBound]
     [ViewContext]
     public ViewContext? ViewContext { get; set; }
