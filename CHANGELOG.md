@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/Projektanker/razor-components/compare/1.2.0...1.3.0) (2022-12-21)
+
+
+### Features
+
+* Add public property containing the razor view name. ([6841173](https://github.com/Projektanker/razor-components/commit/68411735df7054e61764162524c8bf6f64ecae23))
+
 ## [1.2.0](https://github.com/Projektanker/razor-components/compare/1.1.1...1.2.0) (2022-11-16)
 
 
