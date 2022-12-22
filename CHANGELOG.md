@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/Projektanker/razor-components/compare/1.3.0...1.3.1) (2022-12-22)
+
+
+### Bug Fixes
+
+* Detect empty ChildContent ([ea9d448](https://github.com/Projektanker/razor-components/commit/ea9d44871ea38f248eba191504db72aca52ae851))
+
 ## [1.3.0](https://github.com/Projektanker/razor-components/compare/1.2.0...1.3.0) (2022-12-21)
 
 
