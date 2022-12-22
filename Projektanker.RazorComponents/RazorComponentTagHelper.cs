@@ -45,11 +45,12 @@ public abstract class RazorComponentTagHelper : TagHelper
     /// Child content for rendering in the razor template.
     /// </summary>
     [HtmlAttributeNotBound]
-    public IHtmlContent? ChildContent { get; private set; }
+    public TagHelperContent ChildContent { get; private set; }
+        = new DefaultTagHelperContent();
 
     [HtmlAttributeNotBound]
-    public IDictionary<string, IHtmlContent?> NamedSlots { get; }
-        = new Dictionary<string, IHtmlContent?>();
+    public IDictionary<string, TagHelperContent> NamedSlots { get; }
+        = new Dictionary<string, TagHelperContent>();
 
     [HtmlAttributeNotBound]
     internal RazorComponentTagHelper? ParentComponent { get; set; }

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Projektanker.RazorComponents;
 
@@ -20,7 +19,7 @@ public class ComponentSlotTagHelper : TagHelper
             return;
         }
 
-        IHtmlContent? content = null;
+        TagHelperContent? content = null;
         if (string.IsNullOrEmpty(Name))
         {
             content = Model.ChildContent;
@@ -30,7 +29,10 @@ public class ComponentSlotTagHelper : TagHelper
             content = Model.NamedSlots[Name];
         }
 
-        content ??= await output.GetChildContentAsync();
+        if (content == null || content.IsEmptyOrWhiteSpace)
+        {
+            content = await output.GetChildContentAsync();
+        }
 
         output.Content.SetHtmlContent(content);
         output.TagName = null;
