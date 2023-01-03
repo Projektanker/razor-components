@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/Projektanker/razor-components/compare/1.3.1...1.3.2) (2023-01-03)
+
+
+### Bug Fixes
+
+* cache view names in a concurrent way ([253748f](https://github.com/Projektanker/razor-components/commit/253748fd8394ba039cc071511cc64fe45f719578))
+
 ## [1.3.1](https://github.com/Projektanker/razor-components/compare/1.3.0...1.3.1) (2022-12-22)
 
 
