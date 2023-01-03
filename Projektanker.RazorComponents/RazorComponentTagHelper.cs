@@ -1,9 +1,9 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Projektanker.RazorComponents;
 
@@ -12,22 +12,18 @@ public abstract class RazorComponentTagHelper : TagHelper
     private static readonly string ParentComponentsStackKey
         = $"{typeof(RazorComponentTagHelper).FullName}.{nameof(ParentComponentsStackKey)}";
 
-    private static readonly Dictionary<Type, string> _razorViewNamesByType = new();
+    private static readonly ConcurrentDictionary<Type, string> _razorViewNamesByType = new();
 
     private readonly string? _razorViewName;
 
     protected RazorComponentTagHelper()
     {
-        var type = GetType();
-        if (_razorViewNamesByType.TryGetValue(type, out _razorViewName))
+        _razorViewName = _razorViewNamesByType.GetOrAdd(GetType(), type =>
         {
-            return;
-        }
-
-        var assemblyName = type.Assembly.GetName().Name;
-        var relativeTypeName = type.FullName![assemblyName!.Length..];
-        _razorViewName = $"~{relativeTypeName.Replace('.', '/')}.cshtml";
-        _razorViewNamesByType.Add(type, _razorViewName);
+            var assemblyName = type.Assembly.GetName().Name;
+            var relativeTypeName = type.FullName![assemblyName!.Length..];
+            return $"~{relativeTypeName.Replace('.', '/')}.cshtml";
+        });
     }
 
     protected RazorComponentTagHelper(string? razorViewName)
